@@ -1,0 +1,238 @@
+# Medical Imaging Diagnostic System - Setup & Usage Guide
+
+## Project Overview
+BTech Final Year Project: AI-powered medical imaging diagnostic system with 3 image modalities:
+- **Retinal Scans** (APTOS) - Diabetic Retinopathy Detection
+- **Skin Lesions** (HAM10000) - Dermoscopy Analysis  
+- **X-Rays** (MURA) - Bone Fracture Detection
+
+## Features
+✅ Multi-modal medical image classification
+✅ PDF medical report extraction & analysis
+✅ AI chatbot for diagnosis discussion
+✅ Interactive web interface
+✅ Real-time predictions with confidence scores
+
+---
+
+## Setup Instructions
+
+### 1. Install Python Dependencies
+```bash
+cd "C:\Users\Neeraj Tiwari\Desktop\Final Year Project"
+pip install -r requirements.txt
+```
+
+### 2. Install Node.js Dependencies (Frontend)
+```bash
+cd frontend
+npm install
+```
+
+### 3. Train Models (Required before running API)
+
+Train all three models sequentially:
+
+**Train APTOS (Retinal) Model:**
+```bash
+python backend/train.py --dataset aptos --epochs 20
+```
+
+**Train HAM10000 (Skin) Model:**
+```bash
+python backend/train.py --dataset ham10000 --epochs 20
+```
+
+**Train MURA (X-Ray) Model:**
+```bash
+python backend/train.py --dataset mura --epochs 20
+```
+
+**Note:** Training takes time depending on your GPU/CPU. Expected time:
+- With GPU: ~2-4 hours per model
+- With CPU: ~8-12 hours per model
+
+---
+
+## Running the Application
+
+### Start Backend API (Terminal 1)
+```bash
+cd "C:\Users\Neeraj Tiwari\Desktop\Final Year Project"
+python backend/main.py
+```
+Backend runs on: http://localhost:8000
+
+### Start Frontend (Terminal 2)
+```bash
+cd "C:\Users\Neeraj Tiwari\Desktop\Final Year Project\frontend"
+npm run dev
+```
+Frontend runs on: http://localhost:3000
+
+---
+
+## Optional: Google Gemini API (For Enhanced Chatbot)
+
+To enable AI chatbot with Google Gemini:
+
+1. Get free API key from: https://makersuite.google.com/app/apikey
+2. Set environment variable:
+
+**Windows PowerShell:**
+```powershell
+$env:GOOGLE_API_KEY="your-api-key-here"
+```
+
+**Windows CMD:**
+```cmd
+set GOOGLE_API_KEY=your-api-key-here
+```
+
+Then restart the backend server.
+
+**Note:** Without API key, chatbot uses rule-based fallback responses.
+
+---
+
+## Project Structure
+
+```
+Final Year Project/
+├── Datasets/                    # Your downloaded datasets
+│   ├── APTOS_dataset/
+│   ├── HAM10000_dataset/
+│   └── MURA_dataset/
+├── backend/
+│   ├── models/                  # Model architectures
+│   │   └── classifier.py        # Transfer learning models
+│   ├── utils/                   # Utilities
+│   │   ├── data_loader.py       # Dataset loaders
+│   │   ├── predictor.py         # Inference engine
+│   │   ├── pdf_extractor.py     # PDF text extraction
+│   │   └── chatbot.py           # AI assistant
+│   ├── saved_models/            # Trained model checkpoints
+│   ├── uploads/                 # User uploaded files
+│   ├── config.py                # Configuration
+│   ├── train.py                 # Training script
+│   └── main.py                  # FastAPI server
+├── frontend/
+│   ├── src/
+│   │   ├── components/          # React components
+│   │   │   ├── Header.jsx
+│   │   │   ├── ImageUploader.jsx
+│   │   │   ├── ResultsDisplay.jsx
+│   │   │   ├── PDFUploader.jsx
+│   │   │   └── ChatInterface.jsx
+│   │   ├── App.jsx              # Main app
+│   │   ├── api.js               # API client
+│   │   └── main.jsx             # Entry point
+│   ├── package.json
+│   └── vite.config.js
+└── requirements.txt             # Python dependencies
+```
+
+---
+
+## Usage Workflow
+
+1. **Select Image Type** - Choose between Retinal/Skin/X-Ray
+2. **Upload Image** - Drag & drop or browse medical image
+3. **Analyze** - Click analyze button to get AI prediction
+4. **View Results** - See predicted diagnosis with confidence scores
+5. **Upload PDF** (Optional) - Upload medical report for context
+6. **Chat with AI** - Ask questions about diagnosis and treatment
+
+---
+
+## API Endpoints
+
+- `GET /` - Health check
+- `GET /api/models` - Get available models
+- `POST /api/predict` - Predict from image
+- `POST /api/pdf/extract` - Extract PDF text
+- `POST /api/chat` - Chat with AI assistant
+- `POST /api/chat/clear` - Clear chat history
+
+---
+
+## Troubleshooting
+
+### Model not found error
+**Solution:** Train the model first using training commands above
+
+### Port already in use
+**Solution:** Change port in config.py (backend) or vite.config.js (frontend)
+
+### GPU/CUDA errors
+**Solution:** Models work on CPU too. Remove CUDA requirements if needed.
+
+### PDF extraction fails
+**Solution:** Ensure PDF is text-based, not scanned image
+
+### Chatbot not working
+**Solution:** Check if GOOGLE_API_KEY is set. Fallback responses work without key.
+
+---
+
+## Model Performance (Expected)
+
+After training, you should see:
+- **APTOS**: ~75-85% validation accuracy
+- **HAM10000**: ~80-90% validation accuracy  
+- **MURA**: ~75-85% validation accuracy
+
+---
+
+## Technologies Used
+
+**Backend:**
+- Python 3.9+
+- PyTorch (Deep Learning)
+- FastAPI (REST API)
+- Google Gemini API (Chatbot)
+
+**Frontend:**
+- React 18
+- Vite (Build tool)
+- Tailwind CSS (Styling)
+- Axios (HTTP client)
+
+**Models:**
+- EfficientNet-B0 (Transfer Learning)
+- Pretrained on ImageNet
+- Fine-tuned on medical datasets
+
+---
+
+## Important Notes
+
+⚠️ **Medical Disclaimer:** This is an educational AI project. Results should NOT replace professional medical advice. Always consult qualified healthcare providers.
+
+⚠️ **Training Time:** Model training requires significant computation. Use GPU if available.
+
+⚠️ **Dataset Requirements:** Ensure datasets are properly organized in Datasets/ folder.
+
+---
+
+## Next Steps for Enhancement
+
+- Add Grad-CAM visualization for explainability
+- Implement user authentication
+- Add medical report generation
+- Deploy to cloud (AWS/Azure/GCP)
+- Mobile app version
+- Multi-language support
+
+---
+
+## Contact & Support
+
+For BTech project queries and demo:
+- Check backend logs for errors
+- Frontend console for client-side issues
+- Ensure all dependencies installed correctly
+
+---
+
+**Good luck with your Final Year Project! 🎓**
