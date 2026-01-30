@@ -1,4 +1,4 @@
-# 🏥 Medical Imaging Diagnostic System
+# Medical Imaging Diagnostic System
 
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.1.0-red.svg)](https://pytorch.org/)
@@ -8,7 +8,7 @@
 
 > **An AI-powered medical imaging diagnostic system leveraging deep learning for multi-modal medical image analysis with intelligent chatbot assistance.**
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Features](#features)
@@ -29,7 +29,7 @@
 
 ---
 
-## 🎯 Overview
+## Overview
 
 The **Medical Imaging Diagnostic System** is an advanced B.Tech final year project that combines state-of-the-art deep learning techniques with modern web technologies to provide accurate medical image analysis across multiple imaging modalities. The system offers:
 
@@ -39,9 +39,9 @@ The **Medical Imaging Diagnostic System** is an advanced B.Tech final year proje
 - **Interactive AI Chatbot**: Provides medical guidance powered by Google Gemini API
 - **Real-time Predictions**: Instant diagnosis with confidence scores and probability distributions
 
-## ✨ Features
+## Features
 
-### 🔬 Medical Imaging Analysis
+### Medical Imaging Analysis
 
 | Modality | Dataset | Disease Detection | Classes |
 |----------|---------|-------------------|---------|
@@ -49,16 +49,16 @@ The **Medical Imaging Diagnostic System** is an advanced B.Tech final year proje
 | **Dermoscopy** | HAM10000 | Skin Lesions | 7 lesion types |
 | **X-Ray** | MURA | Bone Fractures | Binary (Normal/Abnormal) |
 
-### 🤖 AI-Powered Features
+### AI-Powered Features
 
-- ✅ **Deep Learning Models**: Transfer learning with pre-trained EfficientNet-B0
-- ✅ **High Accuracy**: 75-90% validation accuracy across datasets
-- ✅ **Confidence Scoring**: Probability distribution for all possible diagnoses
-- ✅ **PDF Text Extraction**: Automated medical report parsing
-- ✅ **Conversational AI**: Context-aware chatbot using Google Gemini
-- ✅ **Responsive UI**: Modern React-based interface with real-time updates
+- **Deep Learning Models**: Transfer learning with pre-trained EfficientNet-B0
+- **High Accuracy**: 75-90% validation accuracy across datasets
+- **Confidence Scoring**: Probability distribution for all possible diagnoses
+- **PDF Text Extraction**: Automated medical report parsing
+- **Conversational AI**: Context-aware chatbot using Google Gemini
+- **Responsive UI**: Modern React-based interface with real-time updates
 
-### 🎨 User Experience
+### User Experience
 
 - **Drag & Drop Upload**: Intuitive file upload interface
 - **Real-time Analysis**: Instant predictions with visual feedback
@@ -68,7 +68,7 @@ The **Medical Imaging Diagnostic System** is an advanced B.Tech final year proje
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -97,7 +97,7 @@ The **Medical Imaging Diagnostic System** is an advanced B.Tech final year proje
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Backend
 - **Framework**: FastAPI 0.104.1
@@ -121,7 +121,7 @@ The **Medical Imaging Diagnostic System** is an advanced B.Tech final year proje
 
 ---
 
-## 📊 Dataset Information
+## Dataset Information
 
 ### 1. APTOS (Diabetic Retinopathy)
 - **Source**: Kaggle APTOS 2019 Blindness Detection
@@ -144,7 +144,7 @@ The **Medical Imaging Diagnostic System** is an advanced B.Tech final year proje
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ### Prerequisites
 
@@ -196,7 +196,7 @@ Download the following datasets and place them in the `Datasets/` directory:
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -219,7 +219,7 @@ GOOGLE_API_KEY=your-api-key-here
 
 ---
 
-## 🎓 Training Models
+## Training Models
 
 ### Train Individual Models
 
@@ -261,7 +261,7 @@ python backend/train.py --dataset <dataset> --epochs <num> --model <model_name> 
 
 ---
 
-## 🖥️ Running the Application
+## Running the Application
 
 ### Method 1: Using Batch Scripts (Windows)
 
@@ -296,83 +296,9 @@ Open your browser and navigate to: **http://localhost:3000**
 
 ---
 
-## 📡 API Documentation
 
-### Base URL
-```
-http://localhost:8000
-```
 
-### Endpoints
-
-#### 1. Health Check
-```http
-GET /
-```
-Returns API status and loaded models.
-
-#### 2. Get Available Models
-```http
-GET /api/models
-```
-Returns list of available trained models.
-
-#### 3. Predict Image
-```http
-POST /api/predict
-Content-Type: multipart/form-data
-
-Parameters:
-- file: Image file (PNG, JPG, JPEG, BMP)
-- image_type: Model type (aptos, ham10000, mura)
-```
-
-**Response:**
-```json
-{
-  "success": true,
-  "image_type": "aptos",
-  "predicted_class": "Moderate DR",
-  "confidence": 0.87,
-  "all_probabilities": {
-    "No DR": 0.02,
-    "Mild DR": 0.08,
-    "Moderate DR": 0.87,
-    "Severe DR": 0.02,
-    "Proliferative DR": 0.01
-  }
-}
-```
-
-#### 4. Extract PDF
-```http
-POST /api/pdf/extract
-Content-Type: multipart/form-data
-
-Parameters:
-- file: PDF file
-```
-
-#### 5. Chat with AI
-```http
-POST /api/chat
-Content-Type: application/json
-
-Body:
-{
-  "message": "What does this diagnosis mean?",
-  "diagnosis_context": {...},
-  "pdf_context": "..."
-}
-```
-
-### Interactive API Docs
-
-Visit http://localhost:8000/docs for Swagger UI documentation.
-
----
-
-## 📁 Project Structure
+## Project Structure
 
 ```
 medical-imaging-diagnostic-system/
@@ -418,7 +344,7 @@ medical-imaging-diagnostic-system/
 
 ---
 
-## 📈 Model Performance
+## Model Performance
 
 ### Validation Accuracy
 
@@ -438,7 +364,7 @@ medical-imaging-diagnostic-system/
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 ### Main Dashboard
 ![Dashboard](docs/screenshots/dashboard.png)
@@ -451,25 +377,8 @@ medical-imaging-diagnostic-system/
 
 ---
 
-## 🤝 Contributing
 
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
+## Acknowledgments
 
 ### Datasets
 - **APTOS 2019 Blindness Detection** - Asia Pacific Tele-Ophthalmology Society
@@ -487,16 +396,8 @@ This project was developed as a B.Tech Final Year Project to demonstrate the pra
 
 ---
 
-## 📞 Contact
 
-**Project Maintainer**: Neeraj Tiwari
-
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
-
----
-
-## ⚠️ Medical Disclaimer
+## Medical Disclaimer
 
 **IMPORTANT**: This is an educational AI project designed for academic purposes only. The system should **NOT** be used for actual medical diagnosis or treatment decisions. Always consult qualified healthcare professionals for medical advice, diagnosis, and treatment.
 
